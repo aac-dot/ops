@@ -1,0 +1,52 @@
+- defaultTab: nodes
+  description: |-
+    Job que verifica o uso de disco e mostra em um output amigavel.
+
+    ### Enunciado
+
+    Este job verifica o uso de todos os discos em um node remoto.
+    Em seguida gera o output com os dados relevantes.
+
+    ### OUTPUTS
+
+     - Dispositivo
+     - Ponto de montagem
+     - Espaço total
+     - Espaço em uso
+     - Espaço livre
+  executionEnabled: true
+  group: DIAGNOSTICOS
+  id: 6a45036a-5479-4f52-a71a-66da5f67cb1b
+  loglevel: INFO
+  name: USO DE DISCO
+  nodeFilterEditable: false
+  options:
+  - name: senha
+    required: true
+    secure: true
+    storagePath: keys/ops/senhadificil
+    valueExposed: true
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - autoSecureInput: 'false'
+      description: Exibindo algumas variaveis
+      interpreterArgsQuoted: false
+      passSecureInput: 'false'
+      script: |-
+        #!/bin/bash
+
+        echo $RD_OPTION_MOUNTPOINT
+      scriptInterpreter: /bin/bash
+    keepgoing: false
+    pluginConfig:
+      LogFilter:
+      - config:
+          color: red
+          replacement: '[SECURE]'
+        type: mask-passwords
+    strategy: node-first
+  uuid: 6a45036a-5479-4f52-a71a-66da5f67cb1b
+

@@ -1,0 +1,20 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: 0d8ed0f8-2f1b-4b7d-bd4e-a1397cbae436
+  loglevel: INFO
+  name: teste
+  nodeFilterEditable: false
+  options:
+  - name: MAP
+    valuesUrl: file:/var/lib/rundeck/projects/ops/scm/lib/vars/map.json
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - exec: hostname
+    keepgoing: false
+    strategy: node-first
+  uuid: 0d8ed0f8-2f1b-4b7d-bd4e-a1397cbae436
+
